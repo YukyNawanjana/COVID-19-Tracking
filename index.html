@@ -7,11 +7,34 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+    
     <div class="container">
-        <h2>covid 19</h2>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet velit assumenda similique dolores cumque sit alias optio perferendis debitis. Expedita animi enim esse obcaecati rerum atque minima, quia quae nemo?</p>
-    </div>
+        <div class="row">
+            <div class="col-8 mx-auto my-5">
+                <h1 class="text-danger text-center">COVID-19 Tracking</h1>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="request-quote">
+                            <div class="row">
+                                <div class="form-group col-md-6 mx-auto">
+                                    <select id="country-list" class="form-control"></select>
+                                </div>
+                                <div class="form-group col-md-3 mx-auto">
+                                    <input type="submit" class="form-control btn btn-danger " id="convert-btn" value="View Details"> 
+                                </div>
 
+                            </div>
+                            
+                        </form>
+                        
+                        <div class="text-center mt-1 mb-5"  id="display-result"></div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
