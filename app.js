@@ -55,7 +55,7 @@ form.addEventListener('submit', function(e){
 
             resultDiv.innerHTML = htmlResult;
 
-            displaychart(result);
+           displaychart(result);
           
 
             
@@ -71,29 +71,35 @@ form.addEventListener('submit', function(e){
 
 });
 
-
 function displaychart(result){
-        // Load google charts
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+    // Load google charts
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
-        // Draw the chart and set the chart values
-        function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Work', 8],
-        ['Eat', 2],
-        ['TV', 4],
-        ['Gym', 2],
-        ['Sleep', 8]
-        ]);
+    let deths = result['Total Deaths_text'];
+   let recovery = result['Total Recovered_text']
+   
 
-        // Optional; add a title and set the width and height of the chart
-        var options = {'title':` ${result['Country_text']} Covid cases`, 'width':550, 'height':400};
 
-        // Display the chart inside the <div> element with id="piechart"
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-        }
-    
+    // Draw the chart and set the chart values
+    function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours per Day'],
+    ['Recovery', 85555555555555],
+    ['Deth', 233333333333333]
+    ]);
+
+    // Optional; add a title and set the width and height of the chart
+    var options = {
+        'title':` ${result['Country_text']} Covid cases`,
+         'width':550, 
+         'height':400,
+         colors: ['#3498DB','#E74C3C']
+        };
+
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+    }
+
 }
