@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Covid 19</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
@@ -74,13 +74,42 @@
     </div>
 -->
     
-    <div class="container">
-        <div class="row my-5">
+    <div class="container-fluid">
+        <div class="row my-5 mx-3">
             <div class="col-10 mx-auto text-center text-secondary">
                 <h1>Global Situation</h1>
             </div>
-            <div class="col-lg-12 col-md-12 col-10 mx-auto">
-                <div id="regions_div"></div>
+            <div class="col-lg-8 col-md-6 col-12 mx-auto">
+                <!-- World map -->
+                 <div id="regions_div"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 mx-auto">
+                <div class="row">
+                    <div class="col-md-12 col-12 mx-auto my-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="text-center text-primary mb-1">Global Situation</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
+                                    <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
+                                    <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
+                                    <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
+                                    <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
+                                    <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>     
+                                </ul>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-12 mx-auto my-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="piechart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
