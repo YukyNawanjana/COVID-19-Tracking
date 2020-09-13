@@ -2,14 +2,59 @@ const countrys =["USA","Spain","Italy", "France","Sri Lanka","UK","Russia","Gree
 const form = document.getElementById('request-quote');
 const countryList = document.getElementById('country-list');
 const resultDiv = document.getElementById('display-result');
+const globalDetails = document.querySelector('.globaldetails');
 
 eventListener();
 
 function eventListener(){
     document.addEventListener('DOMContentLoaded', function(){
+        globalSituationDetails();
         displayCountryList();
     });
 }
+
+function globalSituationDetails(){
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET','https://api.covid19api.com/summary', true);
+    xhr.setRequestHeader("x-rapidapi-host", "covid-19-tracking.p.rapidapi.com");
+    xhr.setRequestHeader("x-rapidapi-key", "40abbeb59dmsh31789adfc7679d8p1abb39jsn6b5161e25af2");
+
+    xhr.onload = function(){
+
+        if(this.status === 200){
+            const result= (JSON.parse(this.responseText)).Global;
+            console.log(result);
+
+            const htmlResult =`
+                <div class='card-body'>
+                    <h5> New Confirmed : ${result['NewConfirmed']} </h5>
+                    <h5> New Deaths :  ${result['NewDeaths']} </h5>
+                    <h5> New Recovered :  ${result['NewRecovered']} </h5>
+                    <h5> Total Confirmed :  ${result['TotalConfirmed']} </h5>
+                    <h5> Total Deaths :  ${result['TotalDeaths']}</h5>
+                    <h5> Total Recovered :  ${result['TotalRecovered']}</h5>
+                </div>
+            `;
+
+            globalDetails.innerHTML = htmlResult;
+
+           globaldisplaychart(result, 'globelpiechart');
+          
+
+            
+        }else{
+            console.log("error");
+        }
+    }
+
+
+    xhr.send();
+ 
+}
+
+
 
 function displayCountryList(){
 
@@ -71,13 +116,13 @@ form.addEventListener('submit', function(e){
 
 });
 
-function displaychart(result){
+function globaldisplaychart(result, displayDiv){
     // Load google charts
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
-    let deths = result['Total Deaths_text'];
-   let recovery = result['Total Recovered_text']
+    let totalDeaths = result.TotalDeaths;
+   let totalRecovered = result.TotalRecovered;
    
 
 
@@ -85,20 +130,20 @@ function displaychart(result){
     function drawChart() {
     var data = google.visualization.arrayToDataTable([
     ['Task', 'Hours per Day'],
-    ['Recovery', 85555555555555],
-    ['Deth', 233333333333333]
+    ['Recovery', totalRecovered],
+    ['Deth', totalDeaths]
     ]);
 
     // Optional; add a title and set the width and height of the chart
     var options = {
-        'title':` ${result['Country_text']} Covid cases`,
+        'title':'Global Situation',
          'width':550, 
          'height':400,
          colors: ['#3498DB','#E74C3C']
         };
 
     // Display the chart inside the <div> element with id="piechart"
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    var chart = new google.visualization.PieChart(document.getElementById(`${displayDiv}`));
     chart.draw(data, options);
     }
 
