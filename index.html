@@ -19,75 +19,24 @@
             </h1>
         </nav>
     </header>
-    <!--
-    <div class="container-fluid">
-        <div class="row my-3 mx-3 p-3 card">
-            <div class="col-10 mx-auto mt-1">
-                <h2 class="display-4 text-center text-capitalize">Global Situation</h2>
-            </div>
-            <div class="col-md-12 col-10 mx-auto my-1">
-                <div class="row">
-                    <div class="col-md-6 col-10 mx-auto my-1 ">
-                        <div id="globelpiechart"></div>
-                    </div> 
-
-                    <div class="col-md-6 col-10 mx-auto my-1 ">
-                        <div class="card w-100">
-                            <div class="globaldetails"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-    <div class="container-fluid ">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <form id="request-quote">
-                            <div class="row">
-                                <div class="form-group col-md-6 mx-auto">
-                                    <select id="country-list" class="form-control"></select>
-                                </div>
-                                <div class="form-group col-md-3 mx-auto">
-                                    <input type="submit" class="form-control btn btn-danger " id="convert-btn" value="View Cases"> 
-                                </div>
-
-                            </div>
-                            
-                        </form>
-                    </div>
-                  </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 my-3">
-                <div class="text-center mt-1 mb-5"  id="display-result"></div>
-                
-            </div>
-            <div class="col-md-6 my-3">
-                <div id="piechart"></div>
-            </div>
-        </div>
-    </div>
--->
+    
 <!--------------------------------------> 
 <div class="container-fluid p-3">
-    <div class="row mx-auto">
-        <nav>
-            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-              <a  class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><strong>Global Situation</strong></a>
-              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><strong>Situation by Country</strong></a>
-            </div>
-        </nav>
+    <div class="row">
+        <div class="col-12 mx-auto">
+            <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                  <a  class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><strong>Global Situation</strong></a>
+                  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><strong>Situation by Country</strong></a>
+                </div>
+            </nav>
+        </div>
     </div>
           <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <!-- Global-->
-                <div class="container-fluid">
-                    <div class="row my-5 mx-3">
+                <div class="container-fluid p-0">
+                    <div class="row my-5 mx-0">
                         <div class="col-10 mx-auto text-center text-secondary">
                             <h1>Global Situation</h1>
                             <p>Globally, as of 1:41pm CEST, 13 September 2020, there have been 28,637,274 confirmed cases of COVID-19, including 917,401 deaths, reported to WHO.</p>
