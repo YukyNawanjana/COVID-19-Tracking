@@ -73,47 +73,99 @@
         </div>
     </div>
 -->
-    
-    <div class="container-fluid">
-        <div class="row my-5 mx-3">
-            <div class="col-10 mx-auto text-center text-secondary">
-                <h1>Global Situation</h1>
-            </div>
-            <div class="col-lg-8 col-md-6 col-12 mx-auto">
-                <!-- World map -->
-                 <div id="regions_div"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 mx-auto">
-                <div class="row">
-                    <div class="col-md-12 col-12 mx-auto my-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="text-center text-primary mb-1">Global Situation</h3>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
-                                    <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
-                                    <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
-                                    <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
-                                    <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
-                                    <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>     
-                                </ul>    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-12 mx-auto my-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <div id="piechart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!--------------------------------------> 
+<div class="container-fluid p-3">
 
+        <nav>
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+              <a  class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><strong>Global Situation</strong></a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><strong>Situation by Country</strong></a>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <!-- Global-->
+                <div class="container-fluid">
+                    <div class="row my-5 mx-3">
+                        <div class="col-10 mx-auto text-center text-secondary">
+                            <h1>Global Situation</h1>
+                            <p>Globally, as of 1:41pm CEST, 13 September 2020, there have been 28,637,274 confirmed cases of COVID-19, including 917,401 deaths, reported to WHO.</p>
+                        </div>
+                        <div class="col-lg-8 col-md-6 col-12 mx-auto">
+                            <!-- World map -->
+                             <div id="regions_div"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mx-auto">
+                            <div class="row">
+                                <div class="col-md-12 col-12 mx-auto my-2">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h3 class="text-center text-primary mb-1">Global Situation</h3>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
+                                                <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
+                                                <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
+                                                <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
+                                                <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>
+                                                <li class="list-group-item text-info"><i class="fas fa-virus mr-2"></i>Cras justo odio <strong class="text-primary">123456</strong></li>     
+                                            </ul>    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-12 mx-auto my-2">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div id="piechart"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of  Global-->
+        
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <!-- Country-->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 mx-auto my-3">
+                            <h1 class="text-center mb-4">Situation by Country</h1>
+                            <div class="card">
+                                <div class="card-body">
+                                    <form id="request-quote">
+                                        <div class="row">
+                                            <div class="form-group col-md-6 mx-auto">
+                                                <select id="country-list" class="form-control"></select>
+                                            </div>
+                                            <div class="form-group col-md-3 mx-auto">
+                                                <input type="submit" class="form-control btn btn-danger " id="convert-btn" value="View Cases"> 
+                                            </div>
+                                        </div>  
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End of Country-->
+            </div>
+            
+          </div>
+   
+</div>  
+
+<!-------------------------------------->    
+
+
+
+    
+
+   
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

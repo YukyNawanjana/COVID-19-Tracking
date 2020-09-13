@@ -20,8 +20,10 @@
           ['RU', 700]
         ]);
 
-        var options = {};
-
+        var options = {
+          'title':'Global Situation',
+            colorAxis: {colors: ['#AED6F1', '#2874A6']},
+          };
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
         chart.draw(data, options);
