@@ -80,9 +80,9 @@ function globaldisplaychart(result, displayDiv){
     function drawChart() {
     var data = google.visualization.arrayToDataTable([
     ['Task', 'Hours per Day'],
-    ['Total Recovery', totalRecovered],
-    ['Total Confirmed', totalConfirmed],
-    ['Total Deth', totalDeaths]
+    ['Recovery', totalRecovered],
+    ['Confirmed', totalConfirmed],
+    ['Deth', totalDeaths]
     ]);
 
     // Optional; add a title and set the width and height of the chart
