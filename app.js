@@ -202,7 +202,7 @@ xhr.onload = function(){
         `;
 
         resultDiv.innerHTML = htmlResult;
-
+        console.log("Hello");
        displaychart(result);
       
 
