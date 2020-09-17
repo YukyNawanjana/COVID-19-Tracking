@@ -140,7 +140,7 @@ function globalDisplayMap(){
                 //console.log(data.fg);
                 var options = {
                 'title':'Global Situation',
-                colorAxis: {colors: ['#47A3FF', '#003D7A']},
+                colorAxis: {colors: ['#DBF1FB', '#003D7A']},
                 };
                 var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
             
