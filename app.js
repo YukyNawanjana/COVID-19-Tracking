@@ -2,6 +2,7 @@ const countrys =["USA","Spain","Italy", "France","Sri Lanka","UK","Russia","Gree
 const form = document.getElementById('request-quote');
 const countryList = document.getElementById('country-list');
 const resultDiv = document.getElementById('display-result');
+const mapBtn = document.querySelectorAll('#map-button');
 
 // New variabels
 const globalDetails = document.querySelector('.globaldetails');
@@ -15,6 +16,8 @@ function eventListener(){
         globalDisplayMap();
         displayCountryList();
     });
+
+ 
 }
 
 
@@ -202,8 +205,7 @@ xhr.onload = function(){
         `;
 
         resultDiv.innerHTML = htmlResult;
-        console.log("Hello");
-       displaychart(result);
+       // displaychart(result);
       
 
         
@@ -218,3 +220,4 @@ xhr.send();
 
 
 });
+
