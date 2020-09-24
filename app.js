@@ -15,13 +15,21 @@ eventListener();
 function eventListener(){
     document.addEventListener('DOMContentLoaded', function(){
         globalSituationDetails();
-        globalDisplayMap('NewDeaths', 'new deths', {colors: ['#DBF1FB', '#003D7A']});
+        globalDisplayMap('NewConfirmed', 'New Confirmed', {colors: ['#DBF1FB', '#003D7A']});
         displayCountryList();
     });
 }
 
 mapBtn.addEventListener('click', function(e){
-    console.log(e.target);
+    
+    const value = e.target.value;
+    if(value ==='confirmed'){
+        globalDisplayMap('NewConfirmed', 'New Confirmed', {colors: ['#DBF1FB', '#003D7A']});
+    }else if(value ==='recovered'){
+        globalDisplayMap('NewRecovered', 'New Recovered', {colors: ['#ABEBC6', '#2ECC71']});
+    }else{
+        globalDisplayMap('NewDeaths', 'New Deaths', {colors: ['#F1948A', '#E74C3C']});
+    }
 });
 
 
@@ -120,6 +128,7 @@ function globalDisplayMap(propertyName, name , color){
             // Mapp
             const countrys = JSON.parse(this.responseText).Countries;
             
+
             const displayName = name;
             const property = propertyName;
             const colors = color;
@@ -167,14 +176,6 @@ function globalDisplayMap(propertyName, name , color){
     xhr.send();
 }
 
-
-
-// Google Map
-function globalMap(countryList, propertyName, displayName, color){
-
-        
-
-}
 
 function displayCountryList(){
 
