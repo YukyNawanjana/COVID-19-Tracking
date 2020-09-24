@@ -15,7 +15,7 @@ eventListener();
 function eventListener(){
     document.addEventListener('DOMContentLoaded', function(){
         globalSituationDetails();
-        globalDisplayMap('NewConfirmed', 'New Confirmed', {colors: ['#DBF1FB', '#003D7A']});
+        globalDisplayMap('NewConfirmed', 'New Confirmed', {colors: ['#85D2FF', '#0081CC']});
         displayCountryList();
     });
 }
@@ -26,9 +26,9 @@ mapBtn.addEventListener('click', function(e){
     if(value ==='confirmed'){
         globalDisplayMap('NewConfirmed', 'New Confirmed', {colors: ['#DBF1FB', '#003D7A']});
     }else if(value ==='recovered'){
-        globalDisplayMap('NewRecovered', 'New Recovered', {colors: ['#ABEBC6', '#2ECC71']});
+        globalDisplayMap('NewRecovered', 'New Recovered', {colors: ['#9FF9CA', '#0DD36D']});
     }else{
-        globalDisplayMap('NewDeaths', 'New Deaths', {colors: ['#F1948A', '#E74C3C']});
+        globalDisplayMap('NewDeaths', 'New Deaths', {colors: ['#FE7289', '#F2022A']});
     }
 });
 
