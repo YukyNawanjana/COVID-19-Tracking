@@ -2,23 +2,28 @@ const countrys =["USA","Spain","Italy", "France","Sri Lanka","UK","Russia","Gree
 const form = document.getElementById('request-quote');
 const countryList = document.getElementById('country-list');
 const resultDiv = document.getElementById('display-result');
-const mapBtn = document.querySelectorAll('#map-button');
+const mapBtn = document.querySelector('.map-button');
 
 // New variabels
 const globalDetails = document.querySelector('.globaldetails');
 const globalInfo = document.querySelector('.global-info');
+
+
 
 eventListener();
 
 function eventListener(){
     document.addEventListener('DOMContentLoaded', function(){
         globalSituationDetails();
-        globalDisplayMap();
+        globalDisplayMap('NewDeaths', 'new deths', {colors: ['#DBF1FB', '#003D7A']});
         displayCountryList();
     });
-
- 
 }
+
+mapBtn.addEventListener('click', function(e){
+    console.log(e.target);
+});
+
 
 
 function globalSituationDetails(){
@@ -56,7 +61,6 @@ function globalSituationDetails(){
             
             globaldisplaychart(result, 'globelpiechart');
           
-
             
         }else{
             console.log("error");
@@ -101,8 +105,9 @@ function globaldisplaychart(result, displayDiv){
 
 }
 
-function globalDisplayMap(){
+function globalDisplayMap(propertyName, name , color){
 
+    
     let xhr = new XMLHttpRequest();
 
     xhr.open('GET','https://api.covid19api.com/summary', true);
@@ -115,7 +120,9 @@ function globalDisplayMap(){
             // Mapp
             const countrys = JSON.parse(this.responseText).Countries;
             
-           
+            const displayName = name;
+            const property = propertyName;
+            const colors = color;
             google.charts.load('current', {
                 'packages':['geochart'],
                 // Note: you will need to get a mapsApiKey for your project.
@@ -126,12 +133,12 @@ function globalDisplayMap(){
             
             function drawRegionsMap() {
                 var data = google.visualization.arrayToDataTable([
-                ['Country','Name', 'NewDeaths'],
+                ['Country','Name', `${displayName}`],
                 ['','', 0]
                 ]);
                 
                 countrys.forEach(country =>{
-                let newData = `${country.NewDeaths}`;
+                let newData = `${country[`${property}`]}`;
                 newData = parseInt(newData);
                 var arraynew1 = {
                     'c' : [{v: `${country.CountryCode}`},{v: `${country.Country}`} ,{v : newData}],
@@ -143,13 +150,13 @@ function globalDisplayMap(){
                 //console.log(data.fg);
                 var options = {
                 'title':'Global Situation',
-                colorAxis: {colors: ['#DBF1FB', '#003D7A']},
+                colorAxis: colors
                 };
                 var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
             
                 chart.draw(data, options);
             }
-
+        
 
         }else{
             console.log("error");
@@ -161,6 +168,13 @@ function globalDisplayMap(){
 }
 
 
+
+// Google Map
+function globalMap(countryList, propertyName, displayName, color){
+
+        
+
+}
 
 function displayCountryList(){
 
@@ -218,6 +232,6 @@ xhr.onload = function(){
 xhr.send();
 
 
-
 });
+
 
