@@ -1,4 +1,4 @@
-const countrys =["USA","Spain","Italy", "France","Sri Lanka","UK","Russia","Greenland"];
+//const countrys =["USA","Spain","Italy", "France","Sri Lanka","UK","Russia","Greenland"];
 const form = document.getElementById('request-quote');
 const countryList = document.getElementById('country-list');
 const resultDiv = document.getElementById('display-result');
@@ -179,13 +179,40 @@ function globalDisplayMap(propertyName, name , color){
 
 function displayCountryList(){
 
-    countrys.forEach(country=>{
-        const option = document.createElement('option');
-        option.value = country;
-        option.textContent = `${country}`;
-        countryList.appendChild(option);     
-    });
+    let xhr = new XMLHttpRequest();
 
+    xhr.open('GET','https://api.covid19api.com/countries', true);
+    xhr.setRequestHeader("x-rapidapi-host", "covid-19-tracking.p.rapidapi.com");
+    xhr.setRequestHeader("x-rapidapi-key", "40abbeb59dmsh31789adfc7679d8p1abb39jsn6b5161e25af2");
+
+    xhr.onload = function(){
+
+        if(this.status === 200){
+            const countrys = JSON.parse(this.responseText);
+
+
+            //console.log(countrys['0']['Country']);
+            
+            countrys.forEach(country=>{
+
+                //console.log(country.Country);
+                //console.log(country.ISO2);
+                const option = document.createElement('option');
+                option.value = country['ISO2'];
+                option.textContent = `${country['Country']} - ${country['ISO2']}`;
+                countryList.appendChild(option);     
+            });
+
+
+
+        }else{
+            console.log("Error");
+        }
+
+    }
+
+
+    xhr.send();
 
 
 }
