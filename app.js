@@ -189,9 +189,6 @@ function displayCountryList(){
 
         if(this.status === 200){
             const countrys = JSON.parse(this.responseText);
-
-
-            //console.log(countrys['0']['Country']);
             
             countrys.forEach(country=>{
 
@@ -217,24 +214,28 @@ function displayCountryList(){
 
 }
 
+
 form.addEventListener('submit', function(e){
 e.preventDefault();
 const counterName = countryList.value;
-const url = `https://covid-19-tracking.p.rapidapi.com/v1/${counterName}`;
+const url = `https://api.covid19api.com/country/${counterName}`;
 
 let xhr = new XMLHttpRequest();
 
 
 xhr.open('GET', url, true);
-xhr.setRequestHeader("x-rapidapi-host", "covid-19-tracking.p.rapidapi.com");
-xhr.setRequestHeader("x-rapidapi-key", "40abbeb59dmsh31789adfc7679d8p1abb39jsn6b5161e25af2");
+
 
 xhr.onload = function(){
 
     if(this.status === 200){
+        const date = Date();
+        const month =date.getMonth();
+        console.log(month);
         const result= (JSON.parse(this.responseText));
         console.log(result);
 
+        /*
         const htmlResult =`
             <h5> Active Cases : ${result['Active Cases_text']} </h5>
             <h5> Country :  ${result['Country_text']} </h5>
@@ -248,7 +249,7 @@ xhr.onload = function(){
 
         resultDiv.innerHTML = htmlResult;
        // displaychart(result);
-      
+      */
 
         
     }else{
