@@ -189,17 +189,22 @@ function displayCountryList(){
 
         if(this.status === 200){
             const countrys = JSON.parse(this.responseText);
-            
+            //console.log(countrys);
+            let optionArray = [];
+
             countrys.forEach(country=>{
 
                 //console.log(country.Country);
                 //console.log(country.ISO2);
+                
                 const option = document.createElement('option');
                 option.value = country['ISO2'];
                 option.textContent = `${country['Country']} - ${country['ISO2']}`;
-                countryList.appendChild(option);     
+                //countryList.appendChild(option);     
+                optionArray.push(option);
+            
             });
-
+            console.log(optionArray);
 
 
         }else{
@@ -229,13 +234,14 @@ xhr.open('GET', url, true);
 xhr.onload = function(){
 
     if(this.status === 200){
-        const date = Date();
-        const month =date.getMonth();
-        console.log(month);
+        // const date = Date();
+        // const month =date.getMonth();
+        // console.log(month);
         const result= (JSON.parse(this.responseText));
-        console.log(result);
+        const resultLength = (result.length) - 1;
+        console.log(result[resultLength]);
 
-        /*
+        
         const htmlResult =`
             <h5> Active Cases : ${result['Active Cases_text']} </h5>
             <h5> Country :  ${result['Country_text']} </h5>
@@ -249,7 +255,7 @@ xhr.onload = function(){
 
         resultDiv.innerHTML = htmlResult;
        // displaychart(result);
-      */
+    
 
         
     }else{
