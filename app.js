@@ -127,7 +127,7 @@ function globalDisplayMap(propertyName, name , color){
         if(this.status === 200){
             // Mapp
             const countrys = JSON.parse(this.responseText).Countries;
-            
+            //console.log(countrys);
 
             const displayName = name;
             const property = propertyName;
@@ -181,38 +181,42 @@ function displayCountryList(){
 
     let xhr = new XMLHttpRequest();
 
-    xhr.open('GET','https://api.covid19api.com/countries', true);
+    xhr.open('GET','https://api.covid19api.com/summary', true);
     xhr.setRequestHeader("x-rapidapi-host", "covid-19-tracking.p.rapidapi.com");
     xhr.setRequestHeader("x-rapidapi-key", "40abbeb59dmsh31789adfc7679d8p1abb39jsn6b5161e25af2");
 
     xhr.onload = function(){
 
         if(this.status === 200){
-            const countrys = JSON.parse(this.responseText);
-            //console.log(countrys);
-            let optionArray = [];
 
-            countrys.forEach(country=>{
+            let responseList = JSON.parse(this.responseText);
+                responseList = responseList.Countries;
+                //console.log(responseList);
 
-                //console.log(country.Country);
-                //console.log(country.ISO2);
+            let countrys = [];
+            responseList.forEach(response=>{
+                countrys.push({country : `${response.Country}`, code : `${response.CountryCode}`})
                 
-                const option = document.createElement('option');
-                option.value = country['ISO2'];
-                option.textContent = `${country['Country']} - ${country['ISO2']}`;
-                //countryList.appendChild(option);     
-                optionArray.push(option);
-            
             });
-            console.log(optionArray);
 
+            // Display country list in HTML
+            countrys.forEach(country =>{
+                const option = document.createElement('option');
+                option.value = country['code'];
+                option.textContent = `${country['country']}`;
+                countryList.appendChild(option);     
+            });
+
+                /*
+                // country Arry objects sorting
+                countrys.sort((a, b) => (a.country > b.country) ? 1 : -1);   
+                */
 
         }else{
             console.log("Error");
         }
 
     }
-
 
     xhr.send();
 
@@ -222,8 +226,8 @@ function displayCountryList(){
 
 form.addEventListener('submit', function(e){
 e.preventDefault();
-const counterName = countryList.value;
-const url = `https://api.covid19api.com/country/${counterName}`;
+const counterCode = countryList.value;
+const url = `https://api.covid19api.com/summary`;
 
 let xhr = new XMLHttpRequest();
 
@@ -237,29 +241,44 @@ xhr.onload = function(){
         // const date = Date();
         // const month =date.getMonth();
         // console.log(month);
-        const result= (JSON.parse(this.responseText));
-        const resultLength = (result.length) - 1;
-        console.log(result[resultLength]);
+        let result= (JSON.parse(this.responseText));
+        //const resultLength = (result.length) - 1;
+        //console.log(result[resultLength]);
+        result = result.Countries;
+        result.forEach(country=>{
+            //console.log(country);
+            if(country.CountryCode == counterCode ){
+                const countryDetails = country;
+                
+                console.log(countryDetails);
 
-        
-        const htmlResult =`
-            <h5> Active Cases : ${result['Active Cases_text']} </h5>
-            <h5> Country :  ${result['Country_text']} </h5>
-            <h5> Last Update :  ${result['Last Update']} </h5>
-            <h5> New Cases :  ${result['New Cases_text']}</h5>
-            <h5> New Deaths :  ${result['New Deaths_text']}</h5>
-            <h5> confirmed cases :  ${result['Total Cases_text']}</h5>
-            <h5> Total Deaths :  ${result['Total Deaths_text']}</h5>
-            <h5> Total Recovered :  ${result['Total Recovered_text']}</h5>
-        `;
+                const htmlResult =`
+                    <h5> Country :  ${countryDetails['Country']} </h5>
+                    <h5> Last Update :  ${countryDetails['Date']} </h5>
+                    <h5> New Confirmed :  ${countryDetails['NewConfirmed']}</h5>
+                    <h5> New Recovered :  ${countryDetails['NewRecovered']}</h5>
+                    <h5> New Deaths :  ${countryDetails['NewDeaths']}</h5>
+                    <h5> Total Confirmed :  ${countryDetails['TotalConfirmed']}</h5>
+                    <h5> Total Deaths :  ${countryDetails['TotalDeaths']}</h5>
+                    <h5> Total Recovered :  ${countryDetails['TotalRecovered']}</h5>
+                `;
 
-        resultDiv.innerHTML = htmlResult;
+                resultDiv.innerHTML = htmlResult;
+            
+            }
+        });
+
        // displaychart(result);
     
 
         
     }else{
         console.log("error");
+        const htmlResult =`
+            <h2> Error </h2>
+        `;
+
+        resultDiv.innerHTML = htmlResult;
     }
 }
 
