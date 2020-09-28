@@ -253,38 +253,38 @@ xhr.onload = function(){
                 console.log(countryDetails);
 
                 const htmlResult =`
-                    <h5> Country :  ${countryDetails['Country']} </h5>
-                    <h5> Last Update :  ${countryDetails['Date']} </h5>
-                    <h5> New Confirmed :  ${countryDetails['NewConfirmed']}</h5>
-                    <h5> New Recovered :  ${countryDetails['NewRecovered']}</h5>
-                    <h5> New Deaths :  ${countryDetails['NewDeaths']}</h5>
-                    <h5> Total Confirmed :  ${countryDetails['TotalConfirmed']}</h5>
-                    <h5> Total Deaths :  ${countryDetails['TotalDeaths']}</h5>
-                    <h5> Total Recovered :  ${countryDetails['TotalRecovered']}</h5>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title d-flex justify-content-between align-items-center">
+                                            <img src="https://www.countryflags.io/${countryDetails['CountryCode']}/flat/64.png" class="img-fluid">
+                                            <h3 class="text-center text-primary mb-1">${countryDetails['Country']}</h3>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item text-primary"><i class="fas fa-virus mr-2"></i>New Confirmed <strong class=" ml-2">  ${countryDetails['NewConfirmed']} </strong></li>
+                                            <li class="list-group-item text-primary"><i class="fas fa-virus mr-2"></i>Total Confirmed <strong class=" ml-2"> ${countryDetails['TotalConfirmed']} </strong></li>
+                                            <li class="list-group-item text-success"><i class="fas fa-virus mr-2"></i>New Recovered <strong class=" ml-2"> ${countryDetails['NewRecovered']} </strong></li>
+                                            <li class="list-group-item text-success"><i class="fas fa-virus mr-2"></i>Total Recovered <strong class=" ml-2">  ${countryDetails['TotalRecovered']} </strong></li>     
+                                            <li class="list-group-item text-danger"><i class="fas fa-virus mr-2"></i>New Deaths <strong class=" ml-2">  ${countryDetails['NewDeaths']} </strong></li>
+                                            <li class="list-group-item text-danger"><i class="fas fa-virus mr-2"></i>Total Deaths <strong class=" ml-2"> ${countryDetails['TotalDeaths']} </strong></li>
+                                        </ul> 
+                                        <p class="text-center text-dark font-weight-bold mt-2"> Last Update :  ${countryDetails['Date']} </p>   
+                                    </div>
+                                </div>
                 `;
 
                 resultDiv.innerHTML = htmlResult;
+
+               //displaychart(countryDetails, piechart);
             
             }
         });
-
-       // displaychart(result);
-    
-
         
     }else{
-        console.log("error");
-        const htmlResult =`
-            <h2> Error </h2>
-        `;
 
-        resultDiv.innerHTML = htmlResult;
     }
 }
 
-
 xhr.send();
-
 
 });
 
