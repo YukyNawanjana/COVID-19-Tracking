@@ -250,8 +250,8 @@ xhr.onload = function(){
             if(country.CountryCode == counterCode ){
                 const countryDetails = country;
                 
-                let updateDate = (countryDetails.Date).substring(0,10);
-                let updateTime = (countryDetails.Date).substring(11,16);
+                let date = (countryDetails.Date).substring(0,10);
+               //console.log(date.substring(11,16));
 
                 const htmlResult =`
                                 <div class="card">
@@ -268,7 +268,7 @@ xhr.onload = function(){
                                             <li class="list-group-item text-danger"><i class="fas fa-virus mr-2"></i>New Deaths <strong class=" ml-2">  ${countryDetails['NewDeaths']} </strong></li>
                                             <li class="list-group-item text-danger"><i class="fas fa-virus mr-2"></i>Total Deaths <strong class=" ml-2"> ${countryDetails['TotalDeaths']} </strong></li>
                                         </ul> 
-                                        <p class="text-center text-dark font-weight-bold mt-2"> Last Update : ${updateDate} - ${updateTime}:AM</p>   
+                                        <p class="text-center text-dark font-weight-bold mt-2"> Last Update :  ${countryDetails['Date'].substring(0,10)} - ${countryDetails['Date'].substring(11,16)}:AM </p>   
                                     </div>
                                 </div>
                 `;
