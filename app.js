@@ -67,7 +67,8 @@ function globalSituationDetails(){
             globalDetails.innerHTML = htmlResult;
             globalInfo.innerHTML = `Globally, as of <span class='text-info'> ${date.substring(0,10)} </span>, there have been <span class="text-primary"> ${result['NewConfirmed']} </span> New Confirmed cases of COVID-19, including <span class="text-danger"> ${result['TotalDeaths']}</span> deaths.`;
             
-            globaldisplaychart(result, 'globelpiechart');
+            
+            globaldisplaychart(result, 'globelpiechart', 'Global Situation');
           
             
         }else{
@@ -80,7 +81,7 @@ function globalSituationDetails(){
  
 }
 
-function globaldisplaychart(result, displayDiv){
+function globaldisplaychart(result, displayDiv, title){
     // Load google charts
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
@@ -102,7 +103,7 @@ function globaldisplaychart(result, displayDiv){
 
     // Optional; add a title and set the width and height of the chart
     var options = {
-        'title':'Global Situation',
+        'title':`${title}`,
          colors: ['#03c956','#0070e0', '#F40119']
         };
 
@@ -274,8 +275,7 @@ xhr.onload = function(){
                 `;
 
                 resultDiv.innerHTML = htmlResult;
-
-               //displaychart(countryDetails, piechart);
+                globaldisplaychart(countryDetails, 'country-chart', `${countryDetails['Country']} Situation`);
             
             }
         });
