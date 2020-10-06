@@ -17,6 +17,7 @@ function eventListener(){
         globalSituationDetails();
         globalDisplayMap('NewConfirmed', 'New Confirmed', {colors:['#ADD5FF', '#007BFF']});
         displayCountryList();
+        extraDetails();
     });
 }
 
@@ -120,8 +121,6 @@ function globalDisplayMap(propertyName, name , color){
     let xhr = new XMLHttpRequest();
 
     xhr.open('GET','https://api.covid19api.com/summary', true);
-    xhr.setRequestHeader("x-rapidapi-host", "covid-19-tracking.p.rapidapi.com");
-    xhr.setRequestHeader("x-rapidapi-key", "40abbeb59dmsh31789adfc7679d8p1abb39jsn6b5161e25af2");
 
     xhr.onload = function(){
 
@@ -247,7 +246,6 @@ xhr.onload = function(){
         //console.log(result[resultLength]);
         result = result.Countries;
         result.forEach(country=>{
-            //console.log(country);
             if(country.CountryCode == counterCode ){
                 const countryDetails = country;
                 
@@ -290,3 +288,31 @@ xhr.send();
 });
 
 
+function extraDetails(){
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET','https://api.thevirustracker.com/free-api?countryTimeline=US', true);
+   
+
+    xhr.onload = function(){
+
+        if(this.status === 200){
+
+            let responseList = (this.responseText);
+                console.log(responseList);
+
+                // responseList.forEach(data=>{
+                //     console.log(data);
+                // })
+
+        }else{
+            
+        }
+
+    }
+
+    xhr.send();
+
+
+}
